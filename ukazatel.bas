@@ -8,7 +8,7 @@ Public x As Integer
 
 Sub ukazatel()
 '
-' ukazatel Ìàêðîñ
+' ukazatel
 '
 '
 Set oDoc = ActiveDocument
@@ -23,7 +23,7 @@ Dim TargetLength As Integer
 ReDim Results(0) As String
 
 With oDoc.Range.Find
-    .text = "([À-ÿ]{1}.) ([À-ÿ]{1}.) (<[À-ÿ]{2;}>)([,.;]{1})"
+    .text = "([А-я]{1}.) ([А-я]{1}.) (<[А-я]{2;}>)([,.;]{1})"
     .MatchWildcards = True
     While .Execute
 '        MsgBox (.Parent.Text)
