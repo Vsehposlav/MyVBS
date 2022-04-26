@@ -105,6 +105,7 @@ Private Sub ProcessFacultetAndForma(nameFacultet As String, nameForma As String)
     
     Set col = Range(nameFacultet + ":" + nameFacultet)
     Set colForma = Range(nameForma + ":" + nameForma)
+    Set colGroup = Range(nameGroup + ":" + nameGroup)
     'Set col = Range("G:G")
     
     For Each cell In col.Cells
@@ -115,6 +116,7 @@ Private Sub ProcessFacultetAndForma(nameFacultet As String, nameForma As String)
             Case "Леч."
                 cell.Value = "ЛЕЧ"
                      If colForma.Cells(cell.Row, 1).Value = "7 лет, оч." Then cell.Value = "ЛЕЧВЕЧ"
+                     If InStr(1, colGroup.Cells(cell.Row, 1).Value, "-а", vbTextCompare) > 0 Then cell.Value = "ЛЕЧ-ИНОСТР"
             Case "Фарм."
                 cell.Value = "ФАРМ"
                     If colForma.Cells(cell.Row, 1).Value = "заоч." Then cell.Value = "ЗАОФАРМ"
@@ -122,6 +124,7 @@ Private Sub ProcessFacultetAndForma(nameFacultet As String, nameForma As String)
                 cell.Value = "МЕДПР"
             Case "Стом."
                 cell.Value = "СТОМ"
+                    If InStr(1, colGroup.Cells(cell.Row, 1).Value, "-а", vbTextCompare) > 0 Then cell.Value = "СТОМ-ИНОСТР"
             Case "Инст. сестр."
                 cell.Value = "ВСОД"
         End Select
@@ -357,6 +360,3 @@ Select Case Err
 
 End Select
 End Sub
-
-
-
